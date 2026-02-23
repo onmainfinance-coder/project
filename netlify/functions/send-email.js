@@ -38,7 +38,7 @@ exports.handler = async (event) => {
         ${rows('Last Name', payload.lastname)}
         ${rows('Email', payload.email)}
         ${rows('Phone', payload.phone)}
-        ${rows('DOB', payload.dob)}
+        ${rows('ZIP / Postal Code', payload.zip_code)}
         ${rows('Address', payload.street_address)}
         ${rows('City', payload.city)}
         ${rows('State', payload.state)}
@@ -107,3 +107,4 @@ exports.handler = async (event) => {
         return { statusCode: 500, body: JSON.stringify({ ok: false, error: 'Failed to send email. Check logs.' }) };
     }
 };
+
