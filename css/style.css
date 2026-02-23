@@ -1,0 +1,803 @@
+/* Design System & Global Styles */
+:root {
+    /* Colors */
+    --primary-color: #020361;
+    /* Deep Navy Blue from logo */
+    --secondary-color: #1877F2;
+    /* Azure Radiance / Bright Blue from logo */
+    --accent-color: #e23e3e;
+    /* Red from logo */
+    --text-color: #425466;
+    /* Slate Gray */
+    --heading-color: #020361;
+    /* Deep Navy Blue for headings */
+    --background-color: #ffffff;
+    --light-bg-color: #f6f9fc;
+    --border-color: #e6ebf1;
+    --success-color: #3ecf8e;
+    --error-color: #e23e3e;
+
+    /* Typography */
+    --font-family: 'Roboto', 'Open Sans', sans-serif;
+    --font-size-base: 16px;
+    --font-size-sm: 14px;
+    --font-size-lg: 18px;
+    --font-size-h1: 3rem;
+    --font-size-h2: 2.25rem;
+    --font-size-h3: 1.5rem;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+
+    /* Layout */
+    --container-width: 1200px;
+    --header-height: 80px;
+
+    /* Effects */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --transition: 0.3s ease;
+    --radius: 8px;
+}
+
+/* Global Styles */
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--heading-color);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition), transform var(--transition);
+    border: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: white;
+    /* Changed to white for better contrast on bright blue */
+}
+
+.btn-primary:hover {
+    background-color: #1464cc;
+    /* Darker shade of Azure Radiance */
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--secondary-color);
+    color: var(--heading-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--secondary-color);
+    color: white;
+    /* Better contrast on hover */
+}
+
+.section {
+    padding: var(--spacing-lg) 0;
+}
+
+.bg-light {
+    background-color: var(--light-bg-color);
+}
+
+/* Header */
+.site-header {
+    height: auto;
+    /* Allow flexible height */
+    min-height: var(--header-height);
+    background-color: var(--background-color);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+/* Custom Logo Styles */
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo-icon-custom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    width: 32px;
+    height: 32px;
+    position: relative;
+}
+
+.flower-petal {
+    width: 100%;
+    height: 100%;
+    border-radius: 50% 50% 0 50%;
+    transform: rotate(45deg);
+}
+
+.fp-1 {
+    background-color: #1877F2;
+    /* Bright Blue */
+    transform: rotate(135deg);
+    border-radius: 50% 50% 50% 0;
+}
+
+/* Top Left - Blue */
+.fp-2 {
+    background-color: #020361;
+    /* Dark Blue */
+    transform: rotate(-135deg);
+    border-radius: 50% 50% 0 50%;
+}
+
+/* Top Right - Dark Blue */
+.fp-3 {
+    background-color: #e23e3e;
+    /* Red */
+    transform: rotate(45deg);
+    border-radius: 0 50% 50% 50%;
+}
+
+/* Bottom Left - Red */
+.fp-4 {
+    background-color: #1877F2;
+    /* Bright Blue */
+    transform: rotate(-45deg);
+    border-radius: 50% 0 50% 50%;
+}
+
+/* Bottom Right - Blue - Duplicate of 4 or 5th element? */
+.fp-5 {
+    background-color: #020361;
+    /* Dark Blue */
+    transform: rotate(0deg);
+    /* Adjust based on star shape */
+    /* For a 5 petal star, this grid approach is limited.
+        Assuming the grid is 2x2, the 5th item might break layout.
+        For now, let's keep the colors consistent. */
+    display: none;
+    /* Hiding 5th for 2x2 grid unless we change layout */
+}
+
+/* Text Styles matching screenshot */
+.logo-text {
+    font-family: var(--font-family);
+    line-height: 1;
+}
+
+.lt-main {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #020361;
+    /* Dark Blue */
+    display: block;
+}
+
+.lt-sub {
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #5d6d7e;
+    /* Greyish Blue */
+}
+
+/* Page Header Specifics */
+.page-header {
+    background-color: var(--primary-color);
+    padding: 3rem 0;
+    color: white;
+    text-align: center;
+}
+
+.page-header h1 {
+    color: white;
+    /* Force white text on dark background override global h1 color */
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    /* Vertically align links with button */
+}
+
+.main-nav a {
+    font-weight: 500;
+    color: var(--heading-color);
+    transition: color var(--transition);
+}
+
+.main-nav a:hover {
+    color: var(--secondary-color);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+}
+
+
+.site-footer .logo-text {
+    display: none;
+    /* Hide text in footer as requested */
+}
+
+/* Increase icon size in footer */
+.site-footer .logo-icon-custom {
+    width: 60px;
+    /* Larger icon */
+    height: 60px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.header-logo-image {
+    height: 50px;
+    /* Adjust based on header size */
+    width: auto;
+    display: block;
+}
+
+.footer-logo-image {
+    max-width: 180px;
+    /* Adjust size to match brand presence */
+    height: auto;
+    margin-bottom: var(--spacing-sm);
+    display: block;
+}
+
+/* Remove old footer icon styles if no longer needed or keep generic if shared */
+/* Ensure old icon is hidden if it persists in HTML (which we removed, but good safety) */
+
+
+/* Specific petal positioning adjustments for footer if necessary,
+   but scale() on container or petals is easiest if they are absolute positioned */
+
+
+
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    /* Custom grid for layout */
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-brand p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: var(--spacing-sm);
+    line-height: 1.6;
+    max-width: 300px;
+}
+
+.footer-links h4 {
+    color: white;
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
+}
+
+.footer-links ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color var(--transition);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--secondary-color);
+    padding-left: 5px;
+    /* Subtle movement on hover */
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-contact li svg {
+    min-width: 18px;
+    margin-top: 3px;
+    color: var(--secondary-color);
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    margin-top: var(--spacing-sm);
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+.social-icon:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--spacing-md);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: var(--font-size-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+@media (max-width: 992px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .options-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator-wrapper {
+        grid-template-columns: 1fr !important;
+    }
+
+    .calculator-image {
+        order: -1;
+        /* Image on top mobile if desired, or keep standard order */
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Utilities */
+.text-center {
+    text-align: center;
+}
+
+.mb-1 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.mb-2 {
+    margin-bottom: var(--spacing-md);
+}
+
+.mb-3 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-4 {
+    margin-bottom: var(--spacing-lg);
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.option-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.option-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    width: 64px;
+    /* Optional: Add a subtle background or circle if "proper" implies containment */
+    /* background: #f0f2f5; 
+       border-radius: 50%; */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    :root {
+        --font-size-h1: 2.5rem;
+        --font-size-h2: 1.75rem;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        background-color: var(--background-color);
+        padding: var(--spacing-md);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-150%);
+        transition: transform var(--transition);
+    }
+
+    .main-nav.active {
+        transform: translateY(0);
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
+/* Home Page Specific Styles */
+.hero-section {
+    padding: var(--spacing-xl) 0;
+    /* Use a high-quality office/professional background */
+    background-color: #020361;
+    /* Fallback color */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-section .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Single column for content */
+    gap: var(--spacing-lg);
+    align-items: center;
+    max-width: 1200px;
+    text-align: center;
+    /* Ensure center alignment */
+}
+
+.hero-content {
+    max-width: 800px;
+    /* Increased max-width for better centering appearance */
+    margin: 0 auto;
+    /* Center the block itself */
+    text-align: center;
+    /* Explicitly center align content */
+}
+
+.hero-content h1 {
+    margin-bottom: var(--spacing-md);
+    color: white;
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.hero-content p {
+    font-size: var(--font-size-lg);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+/* Update list items in hero if added */
+.hero-features {
+    list-style: none;
+    margin-bottom: var(--spacing-md);
+    display: inline-block;
+    /* Helps with centering if needed */
+    text-align: left;
+    /* Keep list text left aligned for readability even if block is centered */
+}
+
+/* Ensure the list block itself is centered */
+.hero-content .hero-features {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.hero-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    /* Increased weight */
+}
+
+.hero-features li svg {
+    color: var(--secondary-color);
+    /* Bright Blue checkmarks */
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    /* Align buttons to the center */
+}
+
+/* Hide the separate image container since it's now a background */
+.hero-image {
+    display: none;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.feature-card {
+    background: white;
+    padding: var(--spacing-md);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition);
+    border-top: 4px solid var(--secondary-color);
+}
+
+.icon-wrapper {
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.service-item {
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    font-weight: 500;
+    color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    text-align: center;
+}
+
+.step-card {
+    position: relative;
+    padding: var(--spacing-md);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-sm);
+}
+
+@media (max-width: 992px) {
+    .hero-section .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        /* Center on smaller screens usually looks better, but user requested left? */
+        /* Let's keep center for mobile/tablet as it's standard, but ensure desktop is left. */
+    }
+
+    .hero-content {
+        margin: 0 auto;
+        /* Center the block itself on mobile */
+        text-align: center;
+    }
+
+    .hero-features li {
+        justify-content: center;
+        /* Center list items on mobile */
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image {
+        display: none;
+        /* Hide placeholder on smaller screens if desired, or simpler layout */
+    }
+}
+
+/* Form Styles */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--heading-color);
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    transition: border-color var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Fix Responsiveness for grids (defined after original media queries) */
+@media (max-width: 900px) {
+
+    .features-grid,
+    .options-grid,
+    .calculator-wrapper {
+        grid-template-columns: 1fr !important;
+    }
+
+    .feature-card,
+    .option-item {
+        margin-bottom: 1rem;
+    }
+}
